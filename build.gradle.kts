@@ -18,6 +18,8 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor")
 
     testImplementation(kotlin("test"))
+    // https://mvnrepository.com/artifact/org.assertj/assertj-core
+    testImplementation("org.assertj:assertj-core:3.26.3")
 
     implementation("org.jetbrains.kotlin:kotlin-reflect:2.0.20")
 }
