@@ -24,12 +24,14 @@ class BrettspielNews() : Website("brettspiel-news.de/"), INewsPage {
 //                println("$name: $value")
 //            }
 
-            println(response.body!!.contentInTag("ul"))
+            val page = response.body!!.toWebElement()
+
+            println(page)
+            println(page.scanForTag("ul")[1].scanForTag("li"))
         }
     }
 }
 
-private fun ResponseBody.contentInTag(tag: String): List<String> {
-//    val contents = listOf<String>()
-    return this.string().split("<$tag").flatMap { s -> s.split("/$tag>") }.mapIndexed() { index, s -> "$index: \n$s\n" }
+private fun ResponseBody.toWebElement(): WebElement {
+    return WebElement(this.string())
 }
